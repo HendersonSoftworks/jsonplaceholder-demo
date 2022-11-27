@@ -20,7 +20,7 @@ public class InfiniteScroll : MonoBehaviour
     private void Start()
     {
         // This is working, however repeated calls in forloop cause unity editor to crash - async knowledge required
-        Debug.Log(APIHelper.GetNewPhoto(1).title);
+        // Debug.Log(APIHelper.GetNewPhoto(1).title);
     }
 
     private void Update()
