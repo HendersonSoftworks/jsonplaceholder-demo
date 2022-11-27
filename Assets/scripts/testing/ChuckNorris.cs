@@ -8,7 +8,7 @@ public class ChuckNorris : MonoBehaviour
     private void Start()
     {
         //NewJoke();
-        NewPhoto();
+        //NewPhoto();
     }
 
     public void NewJoke()

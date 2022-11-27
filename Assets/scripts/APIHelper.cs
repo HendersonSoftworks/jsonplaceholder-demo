@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Net;
 using System.IO;
+using System;
 
 public static class APIHelper
 {
     public static Photo GetNewPhoto(int id)
     {
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://jsonplaceholder.typicode.com/photos/" + id.ToString());
+
         HttpWebResponse response = (HttpWebResponse)request.GetResponse();
         StreamReader reader = new StreamReader(response.GetResponseStream());
         string json = reader.ReadToEnd();

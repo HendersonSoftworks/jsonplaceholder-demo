@@ -19,13 +19,8 @@ public class InfiniteScroll : MonoBehaviour
 
     private void Start()
     {
-        // Populate current cards
-        Text[] childTextFields = GetComponentsInChildren<Text>();
-        for (int i = 1; i < childTextFields.Length; i++)
-        {
-            //childTextFields[i].text = APIHelper.GetNewPhoto(i).title;
-            //Debug.Log(APIHelper.GetNewPhoto(i).title);
-        }
+        // This is working, however repeated calls in forloop cause unity editor to crash - async knowledge required
+        Debug.Log(APIHelper.GetNewPhoto(1).title);
     }
 
     private void Update()
