@@ -9,5 +9,5 @@
 - Implemented model animating while interlacing with text and images
 
 # Page 3
-- Implemented radial zoomale layout
+- Implemented radial zoomable layout
 - No jsonplaceholder functionality due to time constraints
