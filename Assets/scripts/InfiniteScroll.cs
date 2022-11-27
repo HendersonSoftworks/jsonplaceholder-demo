@@ -1,10 +1,5 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Networking;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System;
 
 public class InfiniteScroll : MonoBehaviour
 {
@@ -24,15 +19,13 @@ public class InfiniteScroll : MonoBehaviour
 
     private void Start()
     {
-        // Testing
-        // Instantiate PlaceholderPhotos object 
-        //PlaceholderPhotos placeholderPhotos = new PlaceholderPhotos();
-        // Set currentJSON
-        //GetPlaceholderPhotos(sharedClient, 1);
-        // Serialise PlaceholderPhotos object
-        //placeholderPhotos = JsonUtility.FromJson<PlaceholderPhotos>(currentJSON);
-        // 
-        //Debug.Log(placeholderPhotos.thumbnailUrl);
+        // Populate current cards
+        Text[] childTextFields = GetComponentsInChildren<Text>();
+        for (int i = 1; i < childTextFields.Length; i++)
+        {
+            //childTextFields[i].text = APIHelper.GetNewPhoto(i).title;
+            //Debug.Log(APIHelper.GetNewPhoto(i).title);
+        }
     }
 
     private void Update()
@@ -62,54 +55,5 @@ public class InfiniteScroll : MonoBehaviour
                 newCard.GetComponent<HorizontalLayoutGroup>().reverseArrangement = true;
             }
         }
-    }
-
-    static async Task GetAsyncTest(HttpClient httpClient)
-    {
-        using HttpResponseMessage response = await httpClient.GetAsync("todos/3");
-
-        //Debug.Log(response.EnsureSuccessStatusCode());
-
-        var jsonResponse = await response.Content.ReadAsStringAsync();
-
-        Debug.Log($"{jsonResponse}\n");
-        Debug.Log($"{jsonResponse}\n");
-
-        // Expected output:
-        //   GET https://jsonplaceholder.typicode.com/todos/3 HTTP/ 1.1
-        //   {
-        //     "userId": 1,
-        //     "id": 3,
-        //     "title": "fugiat veniam minus",
-        //     "completed": false
-        //   }
-    }
-
-    private static HttpClient sharedClient = new()
-    {
-        BaseAddress = new Uri("https://jsonplaceholder.typicode.com"),
-    };
-
-    static async Task GetPlaceholderPhotos(HttpClient httpClient, int id)
-    {
-        using HttpResponseMessage response = await httpClient.GetAsync("photos/" + id.ToString());
-
-        //Debug.Log(response.EnsureSuccessStatusCode());
-
-        var jsonResponse = await response.Content.ReadAsStringAsync();
-
-        //Debug.Log($"{jsonResponse}\n");
-
-        currentJSON = $"{jsonResponse}\n";
-    }
-
-    [Serializable]
-    private class PlaceholderPhotos
-    {
-        public int albumId;
-        public int id;
-        public string title;
-        public string url;
-        public string thumbnailUrl;
     }
 }
